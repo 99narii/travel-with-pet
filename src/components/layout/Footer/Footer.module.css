@@ -1,4 +1,6 @@
 .footer {
+  position: relative;
+  z-index: 2;
   background-color: var(--color-bg-secondary);
   padding-block: var(--space-12);
   margin-top: auto;

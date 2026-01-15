@@ -77,3 +77,10 @@ main {
   /* Sections handle their own height */
 }
 
+/* Sections after hero should cover the fixed hero background */
+[data-section]:not(:first-child) {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-bg);
+}
+

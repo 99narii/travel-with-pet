@@ -8,11 +8,19 @@
   scroll-snap-align: start;
 }
 
-/* Background */
+/* Background - Fixed to stay in place while scrolling */
 .background {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   z-index: 0;
+  /* GPU acceleration for mobile */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .backgroundImage,

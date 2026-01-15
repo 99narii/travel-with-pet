@@ -15,6 +15,12 @@ export function useSectionScroll() {
       return sectionsRef.current.length;
     }
 
+    // If before first data-section, return -1
+    const firstSection = sectionsRef.current[0];
+    if (firstSection && scrollTop < firstSection.offsetTop - windowHeight / 3) {
+      return -1;
+    }
+
     let currentIndex = 0;
     sectionsRef.current.forEach((section, index) => {
       if (scrollTop >= section.offsetTop - windowHeight / 3) {
@@ -28,8 +34,19 @@ export function useSectionScroll() {
     const sections = sectionsRef.current;
     if (isScrolling.current) return;
 
-    // Allow scrolling past last section to footer
-    if (index < 0) return;
+    // Scroll to top of page (before first data-section)
+    if (index < 0) {
+      isScrolling.current = true;
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+      setTimeout(() => {
+        isScrolling.current = false;
+        accumulatedDelta.current = 0;
+      }, 700);
+      return;
+    }
 
     if (index >= sections.length) {
       // Scroll to bottom of page (footer)

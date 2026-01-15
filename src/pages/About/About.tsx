@@ -12,11 +12,13 @@ export function About() {
   const heroRef = useRef<HTMLDivElement>(null);
   const processRef = useRef<HTMLDivElement>(null);
   const cardContainerRef = useRef<HTMLDivElement>(null);
+  const cardTrackRef = useRef<HTMLDivElement>(null);
   const ctaSectionRef = useRef<HTMLDivElement>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [showTrain, setShowTrain] = useState(false);
   const [showContactButton, setShowContactButton] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [scrollDistance, setScrollDistance] = useState(0);
   const trainAnimationKey = useRef(0);
 
   // Hero text scroll animation
@@ -41,7 +43,30 @@ export function About() {
     offset: ['start start', 'end end'],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-85%']);
+  // Calculate exact scroll distance based on actual card track width
+  useEffect(() => {
+    const calculateScrollDistance = () => {
+      const track = cardTrackRef.current;
+      const container = cardContainerRef.current;
+      if (!track || !container) return;
+
+      const trackWidth = track.scrollWidth;
+      const containerWidth = container.clientWidth;
+      const distance = trackWidth - containerWidth;
+      setScrollDistance(distance > 0 ? distance : 0);
+    };
+
+    // Wait for DOM to be ready
+    const timer = setTimeout(calculateScrollDistance, 100);
+    window.addEventListener('resize', calculateScrollDistance);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', calculateScrollDistance);
+    };
+  }, [isTouchDevice]);
+
+  // Buffer at start (0-10%) and end (90-100%), cards scroll between 10-90%
+  const x = useTransform(scrollYProgress, [0.1, 0.9], [0, -scrollDistance]);
 
   useEffect(() => {
     // Check if it's a mobile device by screen width, not touch capability
@@ -95,7 +120,7 @@ export function About() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     observer.observe(ctaSection);
@@ -109,17 +134,17 @@ export function About() {
         <meta name="description" content={aboutData.metaDescription} />
       </Helmet>
 
+      {/* Fixed Background Image - Outside hero for iOS Safari compatibility */}
+      <motion.div className={styles.heroBackground} style={{ opacity: heroBgOpacity }}>
+        <img
+          src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=2070&auto=format&fit=crop"
+          alt=""
+          className={styles.heroImage}
+        />
+      </motion.div>
+
       {/* Hero Section - Fixed background with circular window */}
       <section ref={heroRef} className={styles.hero}>
-        {/* Fixed Background Image */}
-        <motion.div className={styles.heroBackground} style={{ opacity: heroBgOpacity }}>
-          <img
-            src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=2070&auto=format&fit=crop"
-            alt=""
-            className={styles.heroImage}
-          />
-        </motion.div>
-
         {/* Scrolling Overlay with Circle Cutout */}
         <div className={styles.heroOverlay}>
           <div className={styles.circleMask} />
@@ -209,24 +234,45 @@ export function About() {
           </Container>
 
           <div className={`${styles.cardWrapper} ${isTouchDevice ? styles.cardWrapperMobile : ''}`} ref={cardContainerRef}>
-            <motion.div
-              className={styles.cardTrack}
-              style={{ x }}
-            >
-              {/* Title Card */}
-              <div className={styles.titleCard}>
-                <h2 className={styles.processTitle}>{aboutData.process.title}</h2>
-                <p className={styles.processSubtitle}>{aboutData.process.subtitle}</p>
-              </div>
-              {aboutData.process.steps.map((step) => (
-                <div key={step.number} className={styles.stepCard}>
-                  <span className={styles.stepNumber}>{step.number}</span>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDescription}>{step.description}</p>
-                  <div className={styles.stepLine} />
+            {isTouchDevice ? (
+              /* Mobile: native horizontal scroll */
+              <div className={styles.cardTrack}>
+                <div className={styles.titleCard}>
+                  <h2 className={styles.processTitle}>{aboutData.process.title}</h2>
+                  <p className={styles.processSubtitle}>{aboutData.process.subtitle}</p>
                 </div>
-              ))}
-            </motion.div>
+                {aboutData.process.steps.map((step) => (
+                  <div key={step.number} className={styles.stepCard}>
+                    <span className={styles.stepNumber}>{step.number}</span>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDescription}>{step.description}</p>
+                    <div className={styles.stepLine} />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Desktop: scroll-based horizontal animation */
+              <motion.div
+                ref={cardTrackRef}
+                className={styles.cardTrack}
+                style={{ x }}
+              >
+                <div className={styles.titleCard}>
+                  <h2 className={styles.processTitle}>{aboutData.process.title}</h2>
+                  <p className={styles.processSubtitle}>{aboutData.process.subtitle}</p>
+                </div>
+                {aboutData.process.steps.map((step) => (
+                  <div key={step.number} className={styles.stepCard}>
+                    <span className={styles.stepNumber}>{step.number}</span>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDescription}>{step.description}</p>
+                    <div className={styles.stepLine} />
+                  </div>
+                ))}
+                {/* Empty spacer for end buffer */}
+                <div className={styles.cardSpacer} aria-hidden="true" />
+              </motion.div>
+            )}
           </div>
         </div>
       </section>
