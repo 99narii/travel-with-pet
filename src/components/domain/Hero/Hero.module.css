@@ -2,17 +2,10 @@
   position: relative;
   height: 100vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding-bottom: var(--space-20);
   overflow: hidden;
   scroll-snap-align: start;
-}
-
-@media (min-width: 1024px) {
-  .hero {
-    align-items: center;
-  }
 }
 
 /* Background */

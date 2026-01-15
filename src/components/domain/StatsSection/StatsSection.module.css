@@ -70,8 +70,6 @@
 .marqueeTrack {
   display: flex;
   gap: 0;
-  -webkit-animation: marquee 15s linear infinite;
-  animation: marquee 15s linear infinite;
   will-change: transform;
 }
 
@@ -96,28 +94,6 @@
   object-fit: cover;
 }
 
-@-webkit-keyframes marquee {
-  0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee {
-  0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-}
-
 /* CTA Link - Bottom Right */
 .ctaWrapper {
   display: flex;
@@ -125,8 +101,3 @@
   margin-top: var(--space-8);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .marqueeTrack {
-    animation: none;
-  }
-}

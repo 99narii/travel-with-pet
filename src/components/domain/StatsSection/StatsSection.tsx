@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Text, ArrowLink } from '../../ui';
 import { Container } from '../../layout';
@@ -14,8 +15,40 @@ interface StatsProps {
 }
 
 export function StatsSection({ stats, images }: StatsProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const positionRef = useRef(0);
+
   // Duplicate images for seamless infinite scroll
-  const duplicatedImages = [...images, ...images];
+  const duplicatedImages = [...images, ...images, ...images];
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const speed = 1; // pixels per frame
+    const totalWidth = track.scrollWidth / 3; // width of one set of images
+
+    const animate = () => {
+      positionRef.current -= speed;
+
+      // Reset position when one full set has scrolled
+      if (Math.abs(positionRef.current) >= totalWidth) {
+        positionRef.current = 0;
+      }
+
+      track.style.transform = `translateX(${positionRef.current}px)`;
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className={styles.section}>
@@ -42,7 +75,7 @@ export function StatsSection({ stats, images }: StatsProps) {
 
       {/* Marquee Image Train - Bottom */}
       <div className={styles.marqueeContainer}>
-        <div className={styles.marqueeTrack}>
+        <div className={styles.marqueeTrack} ref={trackRef}>
           {duplicatedImages.map((image, index) => (
             <div key={index} className={styles.marqueeItem}>
               <img
@@ -59,9 +92,10 @@ export function StatsSection({ stats, images }: StatsProps) {
       {/* Text Button - Bottom Right */}
       <Container>
         <div className={styles.ctaWrapper}>
-        <ArrowLink to="/about" className={styles.heroLink}>
-              Travel with pets
-            </ArrowLink>        </div>
+          <ArrowLink to="/about" className={styles.heroLink}>
+            Travel with pets
+          </ArrowLink>
+        </div>
       </Container>
     </section>
   );
