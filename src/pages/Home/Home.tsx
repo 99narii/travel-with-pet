@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useLocale } from '../../hooks';
+import { useLocale, useSectionScroll } from '../../hooks';
 import { Hero, SplitSection, DualCardSection, SemicircleSlider, StatsSection } from '../../components/domain';
 
 const slideImages = [
@@ -19,6 +19,7 @@ const statsImages = [
 
 export function Home() {
   const { t, data } = useLocale();
+  useSectionScroll();
 
   const slides = data.sections.slides.map((slide, index) => ({
     ...slide,
@@ -36,37 +37,47 @@ export function Home() {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <Hero backgroundVideo="/video/main.mp4" />
+      <div data-section>
+        <Hero backgroundVideo="/video/main.mp4" />
+      </div>
 
-      <SplitSection
-        image="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=1976&auto=format&fit=crop"
-        imageAlt={t('sections.family.imageAlt')}
-        title={t('sections.family.title')}
-        imagePosition="left"
-      />
+      <div data-section>
+        <SplitSection
+          image="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=1976&auto=format&fit=crop"
+          imageAlt={t('sections.family.imageAlt')}
+          title={t('sections.family.title')}
+          imagePosition="left"
+        />
+      </div>
 
-      <DualCardSection
-        leftCard={{
-          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop',
-          imageAlt: t('sections.cards.left.imageAlt'),
-          date: t('sections.cards.left.date'),
-          title: t('sections.cards.left.title'),
-          description: t('sections.cards.left.description'),
-          href: '/magazine/jeju-pet-tour',
-        }}
-        rightCard={{
-          image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop',
-          imageAlt: t('sections.cards.right.imageAlt'),
-          date: t('sections.cards.right.date'),
-          title: t('sections.cards.right.title'),
-          description: t('sections.cards.right.description'),
-          href: '/magazine/gangwon-healing-camping',
-        }}
-      />
+      <div data-section>
+        <DualCardSection
+          leftCard={{
+            image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop',
+            imageAlt: t('sections.cards.left.imageAlt'),
+            date: t('sections.cards.left.date'),
+            title: t('sections.cards.left.title'),
+            description: t('sections.cards.left.description'),
+            href: '/magazine/jeju-pet-tour',
+          }}
+          rightCard={{
+            image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop',
+            imageAlt: t('sections.cards.right.imageAlt'),
+            date: t('sections.cards.right.date'),
+            title: t('sections.cards.right.title'),
+            description: t('sections.cards.right.description'),
+            href: '/magazine/gangwon-healing-camping',
+          }}
+        />
+      </div>
 
-      <SemicircleSlider slides={slides} />
+      <div data-section>
+        <SemicircleSlider slides={slides} />
+      </div>
 
-      <StatsSection stats={data.sections.stats} images={statsImages} />
+      <div data-section>
+        <StatsSection stats={data.sections.stats} images={statsImages} />
+      </div>
     </>
   );
 }

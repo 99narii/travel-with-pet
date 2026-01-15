@@ -6,25 +6,15 @@
 /* Web Fonts - Pretendard */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
 
-html,
-body {
-  scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
-  overflow-y: scroll;
+html {
+  /* JS handles section scrolling via useSectionScroll hook */
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   transition: background-color var(--motion-base), color var(--motion-base);
-}
-
-/* Smooth scroll only on desktop */
-@media (min-width: 768px) {
-  html {
-    scroll-behavior: smooth;
-  }
+  overflow-x: hidden;
 }
 
 /* Skip Link */
@@ -87,9 +77,3 @@ main {
   /* Sections handle their own height */
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-  }
-}
