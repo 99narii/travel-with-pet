@@ -390,38 +390,35 @@
   }
 }
 
-/* Process Section - Horizontal Scroll (all devices) */
+/* Process Section - Horizontal Scroll (PC only) */
 .processSection {
   position: relative;
   z-index: 2;
   height: auto;
-  min-height: 100vh;
   background-color: var(--color-bg);
   scroll-snap-align: start;
+  padding: var(--space-12) 0;
 }
 
 @media (min-width: 768px) {
   .processSection {
     height: 300vh;
+    padding: 0;
   }
 }
 
 .processStickyContainer {
   position: relative;
-  top: 0;
-  min-height: 100vh;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: var(--space-20) var(--space-4) var(--space-8);
 }
 
 @media (min-width: 768px) {
   .processStickyContainer {
     position: sticky;
+    top: 0;
     height: 100vh;
-    min-height: auto;
+    overflow: hidden;
     justify-content: center;
     padding: var(--space-16) 0;
   }
@@ -460,13 +457,11 @@
 /* Title Card - slides with cards */
 .titleCard {
   flex-shrink: 0;
-  width: 200px;
-  height: 65%;
-  max-height: 350px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: var(--space-4);
+  padding-bottom: var(--space-4);
 }
 
 @media (min-width: 768px) {
@@ -475,6 +470,7 @@
     height: 70%;
     max-height: 400px;
     padding-right: var(--space-8);
+    padding-bottom: 0;
   }
 }
 
@@ -508,25 +504,20 @@
 /* Card Track */
 .cardWrapper {
   flex: 1;
-  overflow: hidden;
-  padding-left: var(--space-4);
+  overflow: visible;
+  padding: 0 var(--space-4);
 }
 
-/* Mobile - allow horizontal swipe as well */
+/* Mobile - vertical stack */
 .cardWrapperMobile {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.cardWrapperMobile::-webkit-scrollbar {
-  display: none;
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
   .cardWrapper {
+    overflow: hidden;
     padding-left: var(--space-6);
+    padding-right: 0;
   }
 }
 
@@ -538,24 +529,23 @@
 
 .cardTrack {
   display: flex;
+  flex-direction: column;
   gap: var(--space-3);
-  height: 100%;
-  padding-right: var(--space-8);
 }
 
 @media (min-width: 768px) {
   .cardTrack {
+    flex-direction: row;
     gap: var(--space-6);
+    height: 100%;
   }
 }
 
 /* Step Card - no border-radius, better contrast */
 .stepCard {
   flex-shrink: 0;
-  width: 240px;
-  height: 65%;
-  max-height: 350px;
-  padding: var(--space-5);
+  width: 100%;
+  padding: var(--space-4);
   background-color: var(--color-gray-100);
   border: 1px solid var(--color-gray-200);
   display: flex;
