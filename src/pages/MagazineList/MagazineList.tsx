@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -26,22 +26,66 @@ const magazineSlugs = [
 
 export function MagazineList() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollState = useRef({
+    targetScroll: 0,
+    currentScroll: 0,
+    isAnimating: false,
+  });
   const { data } = useLocale();
   const magazineData = data.magazine;
+
+  const smoothScroll = useCallback(() => {
+    const container = containerRef.current;
+    const state = scrollState.current;
+    if (!container) return;
+
+    const diff = state.targetScroll - state.currentScroll;
+
+    // Easing factor (0.1 = smooth, 0.2 = faster)
+    const ease = 0.12;
+
+    if (Math.abs(diff) > 0.5) {
+      state.currentScroll += diff * ease;
+      container.scrollLeft = state.currentScroll;
+      requestAnimationFrame(smoothScroll);
+    } else {
+      state.currentScroll = state.targetScroll;
+      container.scrollLeft = state.targetScroll;
+      state.isAnimating = false;
+    }
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // Initialize scroll state
+    scrollState.current.currentScroll = container.scrollLeft;
+    scrollState.current.targetScroll = container.scrollLeft;
 
     // Only apply wheel-to-horizontal on non-touch devices
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
     const handleWheel = (e: WheelEvent) => {
-      // Prevent default vertical scroll
       e.preventDefault();
-      // Convert vertical scroll to horizontal with speed multiplier
-      container.scrollLeft += e.deltaY * 2.5;
+
+      const state = scrollState.current;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      // Normalize delta for consistent speed across devices
+      // Use a fixed scroll amount based on direction
+      const delta = Math.sign(e.deltaY) * Math.min(Math.abs(e.deltaY), 100);
+      const scrollAmount = delta * 3;
+
+      // Update target scroll position with bounds
+      state.targetScroll = Math.max(0, Math.min(maxScroll, state.targetScroll + scrollAmount));
+
+      // Start animation if not already running
+      if (!state.isAnimating) {
+        state.isAnimating = true;
+        requestAnimationFrame(smoothScroll);
+      }
     };
 
     container.addEventListener('wheel', handleWheel, { passive: false });
@@ -49,7 +93,7 @@ export function MagazineList() {
     return () => {
       container.removeEventListener('wheel', handleWheel);
     };
-  }, []);
+  }, [smoothScroll]);
 
   return (
     <>
