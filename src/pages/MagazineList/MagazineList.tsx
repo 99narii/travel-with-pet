@@ -40,8 +40,8 @@ export function MagazineList() {
     const handleWheel = (e: WheelEvent) => {
       // Prevent default vertical scroll
       e.preventDefault();
-      // Convert vertical scroll to horizontal
-      container.scrollLeft += e.deltaY;
+      // Convert vertical scroll to horizontal with speed multiplier
+      container.scrollLeft += e.deltaY * 2.5;
     };
 
     container.addEventListener('wheel', handleWheel, { passive: false });

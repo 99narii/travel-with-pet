@@ -168,7 +168,15 @@
       "breed": "반려견 견종/나이/특징",
       "breedPlaceholder": "반려견 견종/나이/특징을 입력해주세요",
       "concept": "여행 컨셉/목적",
-      "conceptPlaceholder": "여행 컨셉/목적을 입력해주세요",
+      "conceptPlaceholder": "선택해주세요",
+      "conceptOptions": [
+        { "value": "healing", "label": "힐링/휴양" },
+        { "value": "activity", "label": "액티비티/체험" },
+        { "value": "camping", "label": "캠핑/글램핑" },
+        { "value": "city", "label": "도심 여행" },
+        { "value": "beach", "label": "해변/바다" },
+        { "value": "mountain", "label": "산/숲 트레킹" }
+      ],
       "email": "이메일",
       "emailPlaceholder": "이메일을 입력해주세요",
       "submit": "문의하기",
