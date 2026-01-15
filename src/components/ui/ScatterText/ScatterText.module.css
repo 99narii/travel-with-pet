@@ -1,0 +1,33 @@
+.container {
+  display: inline;
+}
+
+.line {
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+
+.space {
+  display: inline-block;
+  width: 0.3em;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .char {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+}

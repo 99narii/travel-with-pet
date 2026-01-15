@@ -1,0 +1,254 @@
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  height: 100%;
+  padding-block: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 0;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  /* flex: 1; */
+  width: 100%;
+  max-width: 500px;
+  z-index: 1;
+  padding-top: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding-block: var(--space-12);
+  }
+}
+
+.number {
+  font-size: clamp(4rem, 15vw, 8rem);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  line-height: 1;
+  font-family: var(--font-heading);
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.title {
+  line-height: var(--leading-snug);
+  word-break: keep-all;
+}
+
+.description {
+  color: var(--color-text-muted);
+  max-width: 100%;
+}
+
+.controls {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.arrowButton {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--motion-fast);
+}
+
+.arrowButton:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.arrowButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Semicircle area */
+.semicircleWrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+@media (min-width: 768px) {
+  .semicircleWrapper {
+    height: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* 모바일 큰 원 */
+.semicircleOutline {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  right: -750px;
+  opacity: 0.4;
+}
+
+@media (min-width: 768px) {
+  .semicircleOutline {
+    width: 700px;
+    height: 700px;
+    right: -450px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .semicircleOutline {
+    width: 900px;
+    height: 940px;
+    right: -585px;
+  }
+}
+
+/* Arc container - centered on mobile, right-aligned on desktop */
+.arcContainer {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 태블릿 위치 맞음 */
+@media (min-width: 768px) {
+  .arcContainer {
+    width: 700px;
+    height: 700px;
+    left: auto;
+    right: -480px;
+    transform: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .arcContainer {
+    width: 900px;
+    height: 900px;
+    right: -620px;
+  }
+}
+
+/* 사진 */
+.dotWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+@media (min-width: 768px) {
+  .dotWrapper {
+    top: 50%;
+    left: 0;
+    width: 50%;
+    transform-origin: right center;
+  }
+}
+
+/* Dot - scales up when active, positioned on the arc line */
+.dot {
+  position: absolute;
+  left: -220px;
+  top: -120px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .dot {
+    left: -150px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dot {
+    left: -175px;
+    width: 350px;
+    height: 350px;
+  }
+}
+
+.dotBlack {
+  width: 100%;
+  height: 100%;
+  background-color: #a0a0a0;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+/* 모바일에선 작은 점 삭제 */
+@media (max-width: 768px) {
+  .dotBlack {
+    display: none;
+  }
+}
+.dotImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--motion-base);
+}
+
+.dot:hover .dotImage {
+  transform: scale(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dotWrapper,
+  .dot {
+    transition: none;
+  }
+
+  .dot:hover .dotImage {
+    transform: none;
+  }
+}

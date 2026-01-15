@@ -1,0 +1,65 @@
+.section {
+  position: relative;
+  width: 100%;
+}
+
+/* Variants */
+.default {
+  background-color: var(--color-bg);
+}
+
+.primary {
+  background-color: var(--color-primary-lighter);
+}
+
+.secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.dark {
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+/* Spacing */
+.spacing-sm {
+  padding-block: var(--space-8);
+}
+
+.spacing-md {
+  padding-block: var(--space-12);
+}
+
+.spacing-lg {
+  padding-block: var(--space-16);
+}
+
+.spacing-xl {
+  padding-block: var(--space-24);
+}
+
+@media (min-width: 768px) {
+  .spacing-sm {
+    padding-block: var(--space-12);
+  }
+
+  .spacing-md {
+    padding-block: var(--space-16);
+  }
+
+  .spacing-lg {
+    padding-block: var(--space-20);
+  }
+
+  .spacing-xl {
+    padding-block: var(--space-32);
+  }
+}
+
+/* Full Height */
+.fullHeight {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "title": "TravelWithPets - Special Journeys with Your Pet",
+    "description": "Discover unforgettable destinations with your beloved pet. Pet-friendly accommodations, cafes, and attractions all in one place.",
+    "keywords": "pet travel, pet friendly, dog friendly travel, cat travel, pet accommodations, pet cafe",
+    "ogTitle": "WithPetTrip | Everything for Pet-Friendly Travel",
+    "ogDescription": "Create special memories with your beloved pet."
+  },
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "magazine": "Magazine",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Unforgettable journeys\nwith your pet",
+    "subtitle": "Plan the perfect trip in just a few clicks",
+    "cta": "Explore Destinations",
+    "scrollDown": ""
+  },
+  "features": {
+    "title": "Why TravelWithPets?",
+    "subtitle": "Everything for pet-friendly travel in one place"
+  },
+  "destinations": {
+    "title": "Popular Destinations",
+    "subtitle": "Best places to visit with your pet",
+    "viewAll": "View All Destinations"
+  },
+  "process": {
+    "title": "3 Simple Steps",
+    "subtitle": "Plan your perfect trip in just a few clicks"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Have any questions?"
+  },
+  "sections": {
+    "family": {
+      "title": "Happy travels\nwith my family,\nmy beloved pet.",
+      "imageAlt": "Traveling with a dog"
+    },
+    "cards": {
+      "left": {
+        "date": "Jan 2025 - Mar 2025",
+        "title": "Jeju Island Pet-Friendly Tour",
+        "description": "Explore beautiful beaches and volcanic hills of Jeju with your beloved pet.",
+        "imageAlt": "Walking with a dog on Jeju beach"
+      },
+      "right": {
+        "date": "Year-round",
+        "title": "Gangwon Healing Camping",
+        "description": "A special camping experience with your pet in the heart of nature.",
+        "imageAlt": "Camping with a dog in Gangwon forest"
+      }
+    },
+    "slides": [
+      {
+        "title": "Pet-Friendly Stays",
+        "description": "Discover carefully selected accommodations where your pet is always welcome.",
+        "imageAlt": "Hotel with a dog"
+      },
+      {
+        "title": "Activities Together",
+        "description": "Hiking, swimming, camping and more activities to enjoy with your pet.",
+        "imageAlt": "Hiking with a dog"
+      },
+      {
+        "title": "Delicious Pet Cafes",
+        "description": "Special cafes where your pet can enjoy tasty treats too.",
+        "imageAlt": "Dog eating treats at a pet cafe"
+      },
+      {
+        "title": "Beach Walks",
+        "description": "Beautiful beachside trails perfect for walking with your pet.",
+        "imageAlt": "Dog walking on the beach"
+      },
+      {
+        "title": "Nature Trekking",
+        "description": "Special moments bonding with your pet through forests and mountains.",
+        "imageAlt": "Dog trekking in the forest"
+      }
+    ],
+    "stats": [
+      { "number": "4,000+", "label": "Accommodations" },
+      { "number": "5,000+", "label": "Travel Spots" },
+      { "number": "100,000+", "label": "Travelers' Choice" }
+    ]
+  },
+  "cta": {
+    "title": "Get Started Today",
+    "subtitle": "A special journey with your pet awaits you",
+    "button": "Plan Your Trip"
+  },
+  "footer": {
+    "description": "Making every moment of your journey with pets special.",
+    "copyright": "© 2024 TravelWithPets. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "sections": {
+      "company": "Company",
+      "support": "Support",
+      "social": "Social"
+    }
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "toggleTheme": "Toggle theme",
+    "toggleLanguage": "Change language",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "loading": "Loading",
+    "scrollToTop": "Scroll to top",
+    "externalLink": "Opens in new window"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "viewDetails": "View Details",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "about": {
+    "metaTitle": "About | TravelWithPets",
+    "metaDescription": "Introducing TravelWithPets, special journeys with your beloved pets.",
+    "hero": {
+      "badge": "WHO WE ARE",
+      "title": "Special Journeys\nWith Your Pet",
+      "description": "We design the best travel experiences\nfor families with pets to enjoy together."
+    },
+    "company": {
+      "year": "1999",
+      "title": "Since 1999",
+      "description": "TravelWithPets is setting new standards for traveling with pets. We do our best to ensure all family members can enjoy happy travels together.",
+      "team": [
+        { "role": "CEO", "name": "Minsoo Kim", "description": "Creating a new paradigm for travel with pets." },
+        { "role": "CTO", "name": "Jihyun Lee", "description": "Designing better travel experiences through technology." },
+        { "role": "COO", "name": "Yeyoung Hong", "description": "Leading overall operations for the highest service quality." }
+      ]
+    },
+    "process": {
+      "number": "07",
+      "title": "SPECIAL TRAVEL PRODUCT",
+      "subtitle": "Our unique 7-step travel process",
+      "steps": [
+        { "number": "01", "title": "Travel Plan", "description": "We create the perfect travel plan for you and your pet." },
+        { "number": "02", "title": "Pet Check", "description": "We verify your pet's health and travel readiness." },
+        { "number": "03", "title": "Destination", "description": "We carefully select and recommend pet-friendly destinations." },
+        { "number": "04", "title": "Accommodation", "description": "We book the best pet-friendly accommodations." },
+        { "number": "05", "title": "Activity", "description": "We prepare special activities you can enjoy together." },
+        { "number": "06", "title": "Safety", "description": "We prioritize your pet's safety throughout the journey." },
+        { "number": "07", "title": "Memory", "description": "We help you capture and share precious memories." }
+      ]
+    },
+    "cta": {
+      "title": "Shall We Go?",
+      "description": "Start your special journey with your beloved pet.",
+      "button": "Contact"
+    },
+    "contactForm": {
+      "title": "Contact Us",
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "breed": "Dog Breed",
+      "breedPlaceholder": "Enter your dog's breed",
+      "concept": "Travel Concept",
+      "conceptPlaceholder": "Select a travel concept",
+      "conceptOptions": [
+        { "value": "healing", "label": "Healing Trip" },
+        { "value": "adventure", "label": "Activity/Adventure" },
+        { "value": "camping", "label": "Camping" },
+        { "value": "beach", "label": "Beach/Ocean" },
+        { "value": "mountain", "label": "Mountain/Trekking" },
+        { "value": "city", "label": "City Trip" }
+      ],
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "submit": "Submit",
+      "successTitle": "Inquiry Completed!",
+      "successMessage": "It's going to be a great trip!",
+      "close": "Close"
+    }
+  },
+  "magazine": {
+    "pageTitle": "Magazine",
+    "pageSubtitle": "Special travel stories with your beloved pets",
+    "metaTitle": "Magazine | TravelWithPets",
+    "metaDescription": "Travel magazine for journeys with your pet",
+    "items": {
+      "jeju-pet-tour": {
+        "title": "Jeju Pet-Friendly Tour",
+        "subtitle": "Beautiful beaches and oreum with your pet in Jeju",
+        "date": "Jan 2025",
+        "category": "Travel"
+      },
+      "gangwon-healing-camping": {
+        "title": "Gangwon Healing Camping",
+        "subtitle": "Special camping experience with your pet in nature",
+        "date": "Feb 2025",
+        "category": "Camping"
+      },
+      "seoul-pet-cafe": {
+        "title": "Seoul Pet Cafe Tour",
+        "subtitle": "Enjoy cafe culture with your pet in the city",
+        "date": "Mar 2025",
+        "category": "Cafe"
+      },
+      "busan-beach-walk": {
+        "title": "Busan Beach Walk",
+        "subtitle": "Walking trails by the waves with your dog",
+        "date": "Apr 2025",
+        "category": "Beach"
+      },
+      "pet-friendly-pension": {
+        "title": "Pet-Friendly Pension",
+        "subtitle": "Special stays where pets are welcome",
+        "date": "May 2025",
+        "category": "Stay"
+      },
+      "forest-trekking": {
+        "title": "Forest Trekking Guide",
+        "subtitle": "Recommended forest trails nationwide with your dog",
+        "date": "Jun 2025",
+        "category": "Trekking"
+      }
+    }
+  }
+}

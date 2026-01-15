@@ -1,0 +1,36 @@
+.section {
+  padding-top: var(--space-20);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.iconWrapper {
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.iconWrapper svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+.errorCode {
+  font-size: clamp(6rem, 20vw, 12rem);
+  font-weight: var(--font-extrabold);
+  line-height: 1;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  max-width: 400px;
+  margin-bottom: var(--space-4);
+}

@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
+
+/* Sizes */
+.sm {
+  max-width: var(--container-sm);
+}
+
+.md {
+  max-width: var(--container-md);
+}
+
+.lg {
+  max-width: var(--container-lg);
+}
+
+.xl {
+  max-width: var(--container-xl);
+}
+
+.full {
+  max-width: 100%;
+  padding-inline: 0;
+}

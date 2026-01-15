@@ -1,0 +1,54 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-tertiary);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--motion-base);
+}
+
+.loaded .image {
+  opacity: 1;
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-tertiary) 0%,
+    var(--color-bg-secondary) 50%,
+    var(--color-bg-tertiary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+}
+
+.placeholder svg {
+  width: 40%;
+  height: 40%;
+  max-width: 4rem;
+  max-height: 4rem;
+}

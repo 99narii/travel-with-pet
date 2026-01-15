@@ -1,0 +1,75 @@
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  scroll-snap-align: start;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .container.imageRight {
+    flex-direction: row-reverse;
+  }
+}
+
+/* 이미지 영역 */
+.imageWrapper {
+  flex: 1;
+  height: 50%;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .imageWrapper {
+    height: 100%;
+    flex: 1;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 텍스트 영역 */
+.content {
+  flex: 1;
+  height: 50%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  background-color: var(--color-bg);
+}
+
+@media (min-width: 768px) {
+  .content {
+    height: 100%;
+    padding: var(--space-12);
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    padding: var(--space-16);
+  }
+}
+
+.title {
+  max-width: 500px;
+  line-height: var(--leading-snug);
+  word-break: keep-all;
+  white-space: pre-line;
+}

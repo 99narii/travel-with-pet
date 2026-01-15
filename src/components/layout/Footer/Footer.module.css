@@ -1,0 +1,126 @@
+.footer {
+  background-color: var(--color-bg-secondary);
+  padding-block: var(--space-12);
+  margin-top: auto;
+  scroll-snap-align: end;
+}
+
+.content {
+  display: grid;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: var(--font-bold);
+  transition: color var(--motion-fast);
+}
+
+.logo:hover {
+  color: var(--color-primary);
+}
+
+.logoImage {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+
+.description {
+  max-width: 20rem;
+}
+
+.social {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-tertiary);
+  transition:
+    color var(--motion-fast),
+    background-color var(--motion-fast);
+}
+
+.socialLink:hover {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+/* Links */
+.links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.linkGroupTitle {
+  color: var(--color-text-tertiary);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.link {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  transition: color var(--motion-fast);
+}
+
+.link:hover {
+  color: var(--color-primary);
+}
+
+/* Bottom */
+.bottom {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .bottom {
+    text-align: left;
+  }
+}
