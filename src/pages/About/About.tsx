@@ -26,14 +26,14 @@ export function About() {
   });
 
   // Title appears on scroll, then fades out near end
-  const heroTextY = useTransform(heroScrollProgress, [0, 0.3], ['100%', '0%']);
-  const heroTextOpacity = useTransform(heroScrollProgress, [0, 0.3, 0.7, 0.85], [0, 1, 1, 0]);
+  const heroTextY = useTransform(heroScrollProgress, [0, 0.15], ['100%', '0%']);
+  const heroTextOpacity = useTransform(heroScrollProgress, [0, 0.15, 0.8, 0.95], [0, 1, 1, 0]);
 
   // Badge fades out when leaving hero section
-  const heroBadgeOpacity = useTransform(heroScrollProgress, [0, 0.7, 0.85], [1, 1, 0]);
+  const heroBadgeOpacity = useTransform(heroScrollProgress, [0, 0.8, 0.95], [1, 1, 0]);
 
   // Background fades out when leaving hero section
-  const heroBgOpacity = useTransform(heroScrollProgress, [0, 0.8, 1], [1, 1, 0]);
+  const heroBgOpacity = useTransform(heroScrollProgress, [0, 0.9, 1], [1, 1, 0]);
 
   // Process section scroll animation
   const { scrollYProgress } = useScroll({

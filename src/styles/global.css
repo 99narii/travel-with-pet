@@ -8,7 +8,14 @@
 
 html {
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Smooth scroll only on desktop - mobile has native momentum */
+@media (min-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {

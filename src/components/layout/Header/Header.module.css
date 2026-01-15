@@ -280,8 +280,15 @@
   display: flex;
   align-items: center;
   gap: var(--space-4);
+  width: 100%;
   padding: var(--space-4) var(--space-2);
   border-radius: var(--radius-lg);
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
   transition:
     background-color var(--motion-fast),
     color var(--motion-fast);
