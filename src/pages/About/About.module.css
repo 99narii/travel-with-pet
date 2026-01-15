@@ -46,7 +46,7 @@
   width: 150vw;
   height: 150vw;
   background: transparent;
-  box-shadow: 0 0 0 100vmax #1B365C;
+  box-shadow: 0 0 0 100vmax var(--color-gray-700);
 }
 
 /* Mobile only - extend overlay height */
