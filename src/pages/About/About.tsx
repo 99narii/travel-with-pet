@@ -154,7 +154,7 @@ export function About() {
       </motion.div>
 
       {/* Hero Section - Fixed background with circular window */}
-      <section ref={heroRef} className={styles.hero}>
+      <div ref={heroRef} className={styles.hero}>
         {/* Scrolling Overlay with Circle Cutout */}
         <div className={styles.heroOverlay}>
           <div className={styles.circleMask} />
@@ -184,7 +184,7 @@ export function About() {
             ))}
           </p>
         </motion.div>
-      </section>
+      </div>
 
       {/* Company Info Section */}
       <section className={styles.companySection}>

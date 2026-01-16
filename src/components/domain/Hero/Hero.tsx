@@ -17,7 +17,7 @@ export function Hero({ backgroundImage, backgroundVideo }: HeroProps) {
     'https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=2070&auto=format&fit=crop';
 
   return (
-    <section className={styles.hero}>
+    <div className={styles.hero}>
       {/* Background */}
       <div className={styles.background}>
         {backgroundVideo ? (
@@ -81,6 +81,6 @@ export function Hero({ backgroundImage, backgroundVideo }: HeroProps) {
       <div className={styles.scrollIndicator}>
         <ScrollIndicator />
       </div>
-    </section>
+    </div>
   );
 }
