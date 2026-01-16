@@ -100,6 +100,16 @@ export function MagazineList() {
       <Helmet>
         <title>{magazineData.metaTitle}</title>
         <meta name="description" content={magazineData.metaDescription} />
+        <link rel="canonical" href="https://travel-with-pet.vercel.app/magazines" />
+        <meta property="og:title" content={magazineData.metaTitle} />
+        <meta property="og:description" content={magazineData.metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://travel-with-pet.vercel.app/magazines" />
+        <meta property="og:image" content="https://travel-with-pet.vercel.app/share.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={magazineData.metaTitle} />
+        <meta name="twitter:description" content={magazineData.metaDescription} />
+        <meta name="twitter:image" content="https://travel-with-pet.vercel.app/share.jpg" />
       </Helmet>
 
       <div className={styles.page}>

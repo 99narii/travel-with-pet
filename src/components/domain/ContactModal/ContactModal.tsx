@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale } from '../../../hooks';
 import styles from './ContactModal.module.css';
@@ -11,6 +11,8 @@ interface ContactModalProps {
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const { data } = useLocale();
   const form = data.about.contactForm;
+  const modalRef = useRef<HTMLDivElement>(null);
+  const firstInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -18,16 +20,87 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     concept: '',
     email: '',
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Focus first input when modal opens
+  useEffect(() => {
+    if (isOpen && firstInputRef.current) {
+      setTimeout(() => firstInputRef.current?.focus(), 100);
+    }
+  }, [isOpen]);
+
+  // Handle Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        handleClose();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  // Focus trap
+  useEffect(() => {
+    if (!isOpen || !modalRef.current) return;
+
+    const modal = modalRef.current;
+    const focusableElements = modal.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement?.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement?.focus();
+      }
+    };
+
+    modal.addEventListener('keydown', handleTabKey);
+    return () => modal.removeEventListener('keydown', handleTabKey);
+  }, [isOpen, isSubmitted]);
+
+  const validateForm = useCallback(() => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'required';
+    }
+    if (!formData.breed.trim()) {
+      newErrors.breed = 'required';
+    }
+    if (!formData.concept) {
+      newErrors.concept = 'required';
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'invalid';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }, [formData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    if (validateForm()) {
+      setIsSubmitted(true);
+    }
   };
 
   const handleClose = () => {
     setIsSubmitted(false);
     setFormData({ name: '', breed: '', concept: '', email: '' });
+    setErrors({});
     onClose();
   };
 
@@ -48,7 +121,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           onClick={handleBackdropClick}
         >
           <motion.div
+            ref={modalRef}
             className={styles.modal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-modal-title"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -74,39 +151,43 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <h2 className={styles.title}>{form.title}</h2>
+                  <h2 id="contact-modal-title" className={styles.title}>{form.title}</h2>
 
                   <div className={styles.field}>
-                    <label className={styles.label}>{form.name}</label>
+                    <label className={styles.label} htmlFor="contact-name">{form.name}</label>
                     <input
+                      ref={firstInputRef}
+                      id="contact-name"
                       type="text"
-                      className={styles.input}
+                      className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
                       placeholder={form.namePlaceholder}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
+                      aria-invalid={!!errors.name}
                     />
                   </div>
 
                   <div className={styles.field}>
-                    <label className={styles.label}>{form.breed}</label>
+                    <label className={styles.label} htmlFor="contact-breed">{form.breed}</label>
                     <input
+                      id="contact-breed"
                       type="text"
-                      className={styles.input}
+                      className={`${styles.input} ${errors.breed ? styles.inputError : ''}`}
                       placeholder={form.breedPlaceholder}
                       value={formData.breed}
                       onChange={(e) => setFormData({ ...formData, breed: e.target.value })}
-                      required
+                      aria-invalid={!!errors.breed}
                     />
                   </div>
 
                   <div className={styles.field}>
-                    <label className={styles.label}>{form.concept}</label>
+                    <label className={styles.label} htmlFor="contact-concept">{form.concept}</label>
                     <select
-                      className={styles.select}
+                      id="contact-concept"
+                      className={`${styles.select} ${errors.concept ? styles.inputError : ''}`}
                       value={formData.concept}
                       onChange={(e) => setFormData({ ...formData, concept: e.target.value })}
-                      required
+                      aria-invalid={!!errors.concept}
                     >
                       <option value="" disabled>{form.conceptPlaceholder}</option>
                       {form.conceptOptions.map((option) => (
@@ -118,14 +199,15 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
 
                   <div className={styles.field}>
-                    <label className={styles.label}>{form.email}</label>
+                    <label className={styles.label} htmlFor="contact-email">{form.email}</label>
                     <input
+                      id="contact-email"
                       type="email"
-                      className={styles.input}
+                      className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
                       placeholder={form.emailPlaceholder}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
+                      aria-invalid={!!errors.email}
                     />
                   </div>
 

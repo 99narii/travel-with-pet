@@ -12,7 +12,7 @@ export function NotFound() {
   return (
     <>
       <Helmet>
-        <title>404 - Page Not Found</title>
+        <title>{t('notFound.title')}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
 
@@ -39,15 +39,15 @@ export function NotFound() {
             </motion.div>
 
             <Text variant="h1" align="center" className={styles.errorCode}>
-              404
+              {t('notFound.errorCode')}
             </Text>
 
             <Text variant="h3" align="center" color="secondary">
-              Page Not Found
+              {t('notFound.heading')}
             </Text>
 
             <Text variant="body" align="center" color="tertiary" className={styles.description}>
-              The page you&apos;re looking for doesn&apos;t exist or has been moved.
+              {t('notFound.description')}
             </Text>
 
             <Link to="/">

@@ -79,6 +79,42 @@ export function Magazine() {
       <Helmet>
         <title>{magazine.title} | TravelWithPets</title>
         <meta name="description" content={magazine.subtitle} />
+        <link rel="canonical" href={`https://travel-with-pet.vercel.app/magazine/${slug}`} />
+        <meta property="og:title" content={`${magazine.title} | TravelWithPets`} />
+        <meta property="og:description" content={magazine.subtitle} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://travel-with-pet.vercel.app/magazine/${slug}`} />
+        <meta property="og:image" content={slug ? heroImages[slug] : ''} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${magazine.title} | TravelWithPets`} />
+        <meta name="twitter:description" content={magazine.subtitle} />
+        <meta name="twitter:image" content={slug ? heroImages[slug] : ''} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: magazine.title,
+            description: magazine.subtitle,
+            image: slug ? heroImages[slug] : '',
+            datePublished: magazine.date,
+            author: {
+              '@type': 'Organization',
+              name: 'TravelWithPets'
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'TravelWithPets',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://travel-with-pet.vercel.app/favicon.png'
+              }
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `https://travel-with-pet.vercel.app/magazine/${slug}`
+            }
+          })}
+        </script>
       </Helmet>
 
       <article className={styles.article}>

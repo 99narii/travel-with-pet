@@ -17,7 +17,8 @@
     "title": "Unforgettable journeys\nwith your pet",
     "subtitle": "Plan the perfect trip in just a few clicks",
     "cta": "Explore Destinations",
-    "scrollDown": ""
+    "linkText": "Travel with pets",
+    "scrollDown": "Scroll down"
   },
   "features": {
     "title": "Why TravelWithPets?",
@@ -123,6 +124,12 @@
     "close": "Close",
     "previous": "Previous",
     "next": "Next"
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "errorCode": "404",
+    "heading": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved."
   },
   "about": {
     "metaTitle": "About | TravelWithPets",

@@ -132,6 +132,16 @@ export function About() {
       <Helmet>
         <title>{aboutData.metaTitle}</title>
         <meta name="description" content={aboutData.metaDescription} />
+        <link rel="canonical" href="https://travel-with-pet.vercel.app/about" />
+        <meta property="og:title" content={aboutData.metaTitle} />
+        <meta property="og:description" content={aboutData.metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://travel-with-pet.vercel.app/about" />
+        <meta property="og:image" content="https://travel-with-pet.vercel.app/share.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={aboutData.metaTitle} />
+        <meta name="twitter:description" content={aboutData.metaDescription} />
+        <meta name="twitter:image" content="https://travel-with-pet.vercel.app/share.jpg" />
       </Helmet>
 
       {/* Fixed Background Image - Outside hero for iOS Safari compatibility */}

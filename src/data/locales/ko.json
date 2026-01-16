@@ -17,7 +17,8 @@
     "title": "반려동물과 함께,\n잊지 못할 여행을",
     "subtitle": "지금 바로 완벽한 여행을 계획하세요!",
     "cta": "여행지 둘러보기",
-    "scrollDown": ""
+    "linkText": "Travel with pets",
+    "scrollDown": "아래로 스크롤"
   },
   "features": {
     "title": "왜 트래블 위드 펫인가요?",
@@ -123,6 +124,12 @@
     "close": "닫기",
     "previous": "이전",
     "next": "다음"
+  },
+  "notFound": {
+    "title": "404 - 페이지를 찾을 수 없습니다",
+    "errorCode": "404",
+    "heading": "페이지를 찾을 수 없습니다",
+    "description": "찾으시는 페이지가 존재하지 않거나 이동되었습니다."
   },
   "about": {
     "metaTitle": "소개 | TravelWithPets",

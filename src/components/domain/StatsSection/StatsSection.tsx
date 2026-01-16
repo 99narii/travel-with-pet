@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useLocale } from '../../../hooks';
 import { Text, ArrowLink } from '../../ui';
 import { Container } from '../../layout';
 import styles from './StatsSection.module.css';
@@ -15,6 +16,7 @@ interface StatsProps {
 }
 
 export function StatsSection({ stats, images }: StatsProps) {
+  const { t } = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const positionRef = useRef(0);
@@ -93,7 +95,7 @@ export function StatsSection({ stats, images }: StatsProps) {
       <Container>
         <div className={styles.ctaWrapper}>
           <ArrowLink to="/about" className={styles.heroLink}>
-            Travel with pets
+            {t('hero.linkText')}
           </ArrowLink>
         </div>
       </Container>

@@ -32,9 +32,31 @@ export function Home() {
         <title>{t('meta.title')}</title>
         <meta name="description" content={t('meta.description')} />
         <meta name="keywords" content={t('meta.keywords')} />
+        <link rel="canonical" href="https://travel-with-pet.vercel.app" />
         <meta property="og:title" content={t('meta.ogTitle')} />
         <meta property="og:description" content={t('meta.ogDescription')} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://travel-with-pet.vercel.app" />
+        <meta property="og:image" content="https://travel-with-pet.vercel.app/share.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('meta.ogTitle')} />
+        <meta name="twitter:description" content={t('meta.ogDescription')} />
+        <meta name="twitter:image" content="https://travel-with-pet.vercel.app/share.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'TravelWithPets',
+            url: 'https://travel-with-pet.vercel.app',
+            logo: 'https://travel-with-pet.vercel.app/favicon.png',
+            description: t('meta.description'),
+            sameAs: [
+              'https://instagram.com',
+              'https://facebook.com',
+              'https://youtube.com'
+            ]
+          })}
+        </script>
       </Helmet>
 
       <div data-section>

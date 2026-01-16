@@ -19,6 +19,7 @@
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   letter-spacing: var(--tracking-wide);
+  color: transparent
 }
 
 .arrow {

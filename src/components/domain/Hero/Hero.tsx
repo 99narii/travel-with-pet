@@ -71,7 +71,7 @@ export function Hero({ backgroundImage, backgroundVideo }: HeroProps) {
             transition={{ delay: 3, duration: 0.8, ease: 'easeOut' }}
           >
             <ArrowLink to="/about" className={styles.heroLink}>
-              Travel with pets
+              {t('hero.linkText')}
             </ArrowLink>
           </motion.div>
         </div>

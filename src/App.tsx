@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { MotionConfig } from 'framer-motion';
 import { useLocale } from './hooks';
 import { useUIStore } from './store';
 import { Header, Footer } from './components/layout';
@@ -79,9 +80,11 @@ function AppContent() {
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
+      <MotionConfig reducedMotion="user">
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </MotionConfig>
     </HelmetProvider>
   );
 }

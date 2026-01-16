@@ -25,6 +25,7 @@ export interface LocaleData {
     title: string;
     subtitle: string;
     cta: string;
+    linkText: string;
     scrollDown: string;
   };
   features: {
@@ -108,6 +109,12 @@ export interface LocaleData {
     close: string;
     previous: string;
     next: string;
+  };
+  notFound: {
+    title: string;
+    errorCode: string;
+    heading: string;
+    description: string;
   };
   about: {
     metaTitle: string;
