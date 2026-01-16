@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, useLocale } from '../../../hooks';
+import { useUIStore } from '../../../store';
 import { Container } from '../Container';
 import { Icon } from '../../ui';
-import { ContactModal } from '../../domain';
 import logoImg from '../../../assets/icon/logo.png';
 import styles from './Header.module.css';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const { toggleTheme, isDark } = useTheme();
   const { t, locale, toggleLocale, data } = useLocale();
   const location = useLocation();
+  const openContactModal = useUIStore((state) => state.openContactModal);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +50,7 @@ export function Header() {
 
   const handleContactClick = () => {
     setIsMenuOpen(false);
-    setIsContactModalOpen(true);
+    openContactModal();
   };
 
   const sidebarVariants = {
@@ -260,11 +260,6 @@ export function Header() {
           </>
         )}
       </AnimatePresence>
-
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
     </>
   );
 }

@@ -190,42 +190,92 @@
     "pageSubtitle": "Special travel stories with your beloved pets",
     "metaTitle": "Magazine | TravelWithPets",
     "metaDescription": "Travel magazine for journeys with your pet",
+    "notFound": "Magazine not found",
+    "backToList": "Back to list",
     "items": {
       "jeju-pet-tour": {
         "title": "Jeju Pet-Friendly Tour",
-        "subtitle": "Beautiful beaches and oreum with your pet in Jeju",
-        "date": "Jan 2025",
-        "category": "Travel"
+        "subtitle": "Explore the beautiful beaches and oreums of Jeju with your pet.",
+        "date": "Jan 2025 - Mar 2025",
+        "category": "Travel",
+        "content": [
+          { "type": "text", "content": "Jeju Island is the perfect destination for traveling with your pet. With wide-open beaches, beautiful oreums (volcanic hills), and pet-friendly cafes and accommodations throughout the island, it's ideal for creating special memories with your furry companion." },
+          { "type": "image", "caption": "A dog walking on Woljeongri Beach" },
+          { "type": "quote", "content": "Walking together in the Jeju breeze, we truly become family." },
+          { "type": "text", "content": "Woljeongri Beach, where emerald waters meet white sand, is the perfect spot for walking with your dog. Visit in the early morning or at sunset to enjoy a peaceful time on a less crowded beach." },
+          { "type": "image", "caption": "A dog enjoying oreum trekking" },
+          { "type": "text", "content": "Jeju's oreums offer excellent light trekking courses for you and your dog. Explore pet-friendly oreums like Saebyeol Oreum and Yongnuni Oreum, and take in the stunning natural beauty of Jeju. The view from the top will become an unforgettable memory." }
+        ]
       },
       "gangwon-healing-camping": {
         "title": "Gangwon Healing Camping",
-        "subtitle": "Special camping experience with your pet in nature",
-        "date": "Feb 2025",
-        "category": "Camping"
+        "subtitle": "A special camping experience with your pet in nature.",
+        "date": "Year-round",
+        "category": "Camping",
+        "content": [
+          { "type": "text", "content": "Camping with your pet deep in the forests of Gangwon Province offers a special healing experience you can't find in the city. Fresh air, birdsong, and time with your beloved pet create true relaxation." },
+          { "type": "image", "caption": "A peaceful morning at a forest campsite" },
+          { "type": "quote", "content": "A night together in nature, the warmth shared under the starlight is the warmest of all." },
+          { "type": "text", "content": "Gangwon Province has many pet-friendly campsites. Located in areas with excellent natural environments like Inje, Pyeongchang, and Hongcheon, these campsites let you and your dog fully enjoy nature." },
+          { "type": "image", "caption": "Trekking through Gangwon forest trails" },
+          { "type": "text", "content": "Take healing walks with your dog along the forest trails near the campsite. Dip your feet in the stream, breathe in the forest scent, and experience true rest in nature's embrace with your pet." }
+        ]
       },
       "seoul-pet-cafe": {
         "title": "Seoul Pet Cafe Tour",
-        "subtitle": "Enjoy cafe culture with your pet in the city",
+        "subtitle": "Enjoy cafe culture with your pet in the city.",
         "date": "Mar 2025",
-        "category": "Cafe"
+        "category": "Cafe",
+        "content": [
+          { "type": "text", "content": "Seoul has a variety of pet cafes where you can enjoy quality time with your pet. Explore trendy areas like Hongdae, Yeonnam-dong, and Seongsu-dong while enjoying a relaxing coffee time with your dog." },
+          { "type": "image", "caption": "Relaxing time at a pet-friendly cafe" },
+          { "type": "quote", "content": "A cup of coffee becomes even more special when shared with your pet." },
+          { "type": "text", "content": "Seoul's pet cafes offer special menus and amenities for pets. From doggy treats to dedicated play areas, your pet can have just as much fun as you." },
+          { "type": "image", "caption": "A dog enjoying treats at a cafe" },
+          { "type": "text", "content": "From hidden alley cafes in Yeonnam-dong to industrial-style cafes in Seongsu-dong, explore pet-friendly cafes throughout Seoul and create special memories with your pet." }
+        ]
       },
       "busan-beach-walk": {
         "title": "Busan Beach Walk",
-        "subtitle": "Walking trails by the waves with your dog",
+        "subtitle": "Walking trails by the waves with your dog.",
         "date": "Apr 2025",
-        "category": "Beach"
+        "category": "Beach",
+        "content": [
+          { "type": "text", "content": "Busan's beautiful beaches are the perfect place for walks with your dog. Listen to the sound of waves and enjoy a leisurely stroll at Gwangalli, Haeundae, or Songjeong Beach." },
+          { "type": "image", "caption": "A dog running on a Busan beach" },
+          { "type": "quote", "content": "The moment when waves touch your feet and wind blows through your fur is the happiest." },
+          { "type": "text", "content": "Visit in the early morning or at sunset to run freely with your dog on a peaceful beach. Songjeong Beach is particularly popular because it has a large pet-friendly area." },
+          { "type": "image", "caption": "Beautiful sunset scenery at a Busan beach" },
+          { "type": "text", "content": "After your beach walk, take a break at a nearby pet-friendly cafe with a refreshing drink. A trip to Busan's seaside with your dog will become an unforgettable memory." }
+        ]
       },
       "pet-friendly-pension": {
         "title": "Pet-Friendly Pension",
-        "subtitle": "Special stays where pets are welcome",
+        "subtitle": "Special accommodations where pets are welcome.",
         "date": "May 2025",
-        "category": "Stay"
+        "category": "Stay",
+        "content": [
+          { "type": "text", "content": "Choosing the right accommodation is very important when traveling with your pet. Enjoy a comfortable rest with your pet at pet-friendly pensions located throughout the country." },
+          { "type": "image", "caption": "A pet-friendly pension with a spacious yard" },
+          { "type": "quote", "content": "Time spent with your pet in a space as comfortable as home - that's what true travel is about." },
+          { "type": "text", "content": "Good pet-friendly pensions feature spacious yards, pet amenities, and nearby walking trails. Be sure to check the pet policy and any additional fees before booking." },
+          { "type": "image", "caption": "A dog walking in nature near the pension" },
+          { "type": "text", "content": "From pet-friendly pensions near Seoul in Gapyeong, Yangpyeong, and Pocheon, to natural settings in Jeju and Gangwon Province, experience a special getaway with your pet." }
+        ]
       },
       "forest-trekking": {
         "title": "Forest Trekking Guide",
-        "subtitle": "Recommended forest trails nationwide with your dog",
+        "subtitle": "Recommended forest trails nationwide with your dog.",
         "date": "Jun 2025",
-        "category": "Trekking"
+        "category": "Trekking",
+        "content": [
+          { "type": "text", "content": "Forest trekking with your dog is the best exercise and healing experience for both of you. Enjoy nature with your pet on beautiful forest trails throughout the country." },
+          { "type": "image", "caption": "A dog walking on a forest trail" },
+          { "type": "quote", "content": "Walking together while breathing in the forest scent - more precious than any other journey." },
+          { "type": "text", "content": "From hiking trails in the Seoul area like Bukhansan, Gwanaksan, and Namsan, to famous mountains nationwide like Jirisan and Seoraksan, we introduce pet-friendly trekking courses. Choose a course that suits your dog based on difficulty and distance." },
+          { "type": "image", "caption": "Beautiful scenery from the summit" },
+          { "type": "text", "content": "When trekking, be sure to bring enough water, treats, and waste bags. Paw pads or shoes to protect your dog's feet are also recommended. Enjoying nature while preserving it is what true trekking is all about." }
+        ]
       }
     }
   }

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLocale } from '../../../hooks';
+import { useUIStore } from '../../../store';
 import { Container } from '../Container';
 import { Icon, Text } from '../../ui';
 import logoImg from '../../../assets/icon/logo.png';
@@ -13,15 +14,11 @@ const socialLinks = [
 
 export function Footer() {
   const { t } = useLocale();
+  const openContactModal = useUIStore((state) => state.openContactModal);
 
   const footerLinks = {
     company: [
       { label: t('nav.about'), href: '/about' },
-      { label: t('nav.contact'), href: '/contact' },
-    ],
-    support: [
-      { label: t('footer.links.privacy'), href: '/privacy' },
-      { label: t('footer.links.terms'), href: '/terms' },
     ],
   };
 
@@ -68,21 +65,15 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
-              </ul>
-            </div>
-
-            <div className={styles.linkGroup}>
-              <Text variant="overline" className={styles.linkGroupTitle}>
-                {t('footer.sections.support')}
-              </Text>
-              <ul className={styles.linkList}>
-                {footerLinks.support.map((link) => (
-                  <li key={link.href}>
-                    <Link to={link.href} className={styles.link}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <button
+                    type="button"
+                    className={styles.link}
+                    onClick={openContactModal}
+                  >
+                    {t('nav.contact')}
+                  </button>
+                </li>
               </ul>
             </div>
           </div>

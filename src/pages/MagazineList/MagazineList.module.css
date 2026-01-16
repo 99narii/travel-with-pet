@@ -43,15 +43,23 @@
   display: flex;
   gap: var(--space-4);
   padding: var(--space-4) var(--space-6);
-  padding-right: 150px;
   height: 100%;
+}
+
+.cardList::after {
+  content: '';
+  flex-shrink: 0;
+  width: 150px;
 }
 
 @media (min-width: 768px) {
   .cardList {
     gap: var(--space-6);
     padding: var(--space-4) var(--space-8);
-    padding-right: 300px;
+  }
+
+  .cardList::after {
+    width: 300px;
   }
 }
 

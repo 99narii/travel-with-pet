@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { useLocale } from './hooks';
+import { useUIStore } from './store';
 import { Header, Footer } from './components/layout';
+import { ContactModal } from './components/domain';
 import { IntroLoader } from './components/ui';
 import { ScrollToTop } from './components/utils';
 import { About, Home, Magazine, MagazineList, NotFound } from './pages';
@@ -14,6 +16,7 @@ function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [isNavigating, setIsNavigating] = useState(false);
   const isFirstRender = useRef(true);
+  const { isContactModalOpen, closeContactModal } = useUIStore();
 
   // Show loader on route change (not on first render)
   useEffect(() => {
@@ -66,6 +69,9 @@ function AppContent() {
       </main>
 
       <Footer />
+
+      {/* Global Contact Modal */}
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
     </>
   );
 }

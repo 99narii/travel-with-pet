@@ -2,8 +2,8 @@ import { useRef, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Container } from '../../components/layout';
-import { ContactModal } from '../../components/domain';
 import { useLocale } from '../../hooks';
+import { useUIStore } from '../../store';
 import styles from './About.module.css';
 
 export function About() {
@@ -17,9 +17,9 @@ export function About() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [showTrain, setShowTrain] = useState(false);
   const [showContactButton, setShowContactButton] = useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [scrollDistance, setScrollDistance] = useState(0);
   const trainAnimationKey = useRef(0);
+  const openContactModal = useUIStore((state) => state.openContactModal);
 
   // Hero text scroll animation
   const { scrollYProgress: heroScrollProgress } = useScroll({
@@ -317,7 +317,7 @@ export function About() {
             <button
               type="button"
               className={`${styles.ctaButton} ${showContactButton ? styles.visible : ''}`}
-              onClick={() => setIsContactModalOpen(true)}
+              onClick={openContactModal}
             >
               {aboutData.cta.button}
               <span className={styles.ctaButtonArrow}>→</span>
@@ -325,11 +325,6 @@ export function About() {
           </motion.div>
         </Container>
       </section>
-
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
     </div>
   );
 }

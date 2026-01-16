@@ -107,6 +107,11 @@
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   transition: color var(--motion-fast);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
 }
 
 .link:hover {

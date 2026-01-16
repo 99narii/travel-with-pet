@@ -167,6 +167,8 @@ export interface LocaleData {
     pageSubtitle: string;
     metaTitle: string;
     metaDescription: string;
+    notFound: string;
+    backToList: string;
     items: {
       'jeju-pet-tour': MagazineItem;
       'gangwon-healing-camping': MagazineItem;
@@ -178,9 +180,16 @@ export interface LocaleData {
   };
 }
 
+interface MagazineContentBlock {
+  type: 'text' | 'image' | 'quote';
+  content?: string;
+  caption?: string;
+}
+
 interface MagazineItem {
   title: string;
   subtitle: string;
   date: string;
   category: string;
+  content?: MagazineContentBlock[];
 }
