@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, useLocale } from '../../../hooks';
@@ -11,8 +11,10 @@ import styles from './Header.module.css';
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLocaleOpen, setIsLocaleOpen] = useState(false);
+  const localeRef = useRef<HTMLDivElement>(null);
   const { toggleTheme, isDark } = useTheme();
-  const { t, locale, toggleLocale, data } = useLocale();
+  const { t, locale, setLocale, data } = useLocale();
   const location = useLocation();
   const openContactModal = useUIStore((state) => state.openContactModal);
 
@@ -40,6 +42,27 @@ export function Header() {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
+
+  // Close locale dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (localeRef.current && !localeRef.current.contains(event.target as Node)) {
+        setIsLocaleOpen(false);
+      }
+    };
+
+    if (isLocaleOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLocaleOpen]);
+
+  const handleLocaleSelect = (newLocale: 'ko' | 'en') => {
+    setLocale(newLocale);
+    setIsLocaleOpen(false);
+  };
 
   const navItems = [
     { href: '/', label: data.nav.home },
@@ -102,35 +125,79 @@ export function Header() {
       <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
         <Container>
           <nav className={styles.nav} aria-label="Main navigation">
-            {/* Hamburger Button */}
-            <button
-              className={styles.hamburger}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? t('a11y.menuClose') : t('a11y.menuOpen')}
-              aria-expanded={isMenuOpen}
-            >
-              <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`} />
-              <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`} />
-              <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`} />
-            </button>
+            {/* Left Group: Hamburger + Logo */}
+            <div className={styles.leftGroup}>
+              {/* Hamburger Button */}
+              <button
+                className={styles.hamburger}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? t('a11y.menuClose') : t('a11y.menuOpen')}
+                aria-expanded={isMenuOpen}
+              >
+                <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`} />
+                <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`} />
+                <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`} />
+              </button>
 
-            {/* Logo */}
-            <Link to="/" className={styles.logo} aria-label="TravelWithPets Home">
-              {/* <img src={logoImg} alt="" className={styles.logoImage} /> */}
-              <span className={styles.logoText}>TravelWithPets</span>
-            </Link>
+              {/* Logo */}
+              <Link to="/" className={styles.logo} aria-label="TravelWithPets Home">
+                <span className={styles.logoText}>TravelWithPets</span>
+              </Link>
+            </div>
 
             {/* Right Actions */}
             <div className={styles.actions}>
-              <button
-                className={styles.iconButton}
-                onClick={toggleLocale}
-                aria-label={t('a11y.toggleLanguage')}
-              >
-                <span className={styles.localeText}>
-                  {locale === 'ko' ? 'EN' : 'KO'}
-                </span>
-              </button>
+              {/* Locale Dropdown */}
+              <div className={styles.localeDropdown} ref={localeRef}>
+                <button
+                  className={styles.localeButton}
+                  onClick={() => setIsLocaleOpen(!isLocaleOpen)}
+                  aria-label={t('a11y.toggleLanguage')}
+                  aria-expanded={isLocaleOpen}
+                  aria-haspopup="listbox"
+                >
+                  <span className={styles.localeText}>
+                    {locale.toUpperCase()}
+                  </span>
+                  <span className={`${styles.localeArrow} ${isLocaleOpen ? styles.open : ''}`}>
+                    ▼
+                  </span>
+                </button>
+
+                <AnimatePresence>
+                  {isLocaleOpen && (
+                    <motion.ul
+                      className={styles.localeMenu}
+                      role="listbox"
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <li>
+                        <button
+                          className={`${styles.localeOption} ${locale === 'ko' ? styles.selected : ''}`}
+                          onClick={() => handleLocaleSelect('ko')}
+                          role="option"
+                          aria-selected={locale === 'ko'}
+                        >
+                          KO
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          className={`${styles.localeOption} ${locale === 'en' ? styles.selected : ''}`}
+                          onClick={() => handleLocaleSelect('en')}
+                          role="option"
+                          aria-selected={locale === 'en'}
+                        >
+                          EN
+                        </button>
+                      </li>
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <button
                 className={styles.iconButton}

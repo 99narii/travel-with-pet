@@ -39,11 +39,11 @@ export function Hero({ backgroundImage, backgroundVideo }: HeroProps) {
             aria-hidden="true"
           />
         )}
-        <div className={styles.overlay} aria-hidden="true" />
+        {/* <div className={styles.overlay} aria-hidden="true" /> */}
       </div>
 
       {/* Content */}
-      <Container>
+      {/* <Container>
         <div className={styles.content}>
           <h1 className={styles.title}>
             <ScatterText
@@ -75,7 +75,7 @@ export function Hero({ backgroundImage, backgroundVideo }: HeroProps) {
             </ArrowLink>
           </motion.div>
         </div>
-      </Container>
+      </Container> */}
 
       {/* Scroll Indicator */}
       <div className={styles.scrollIndicator}>

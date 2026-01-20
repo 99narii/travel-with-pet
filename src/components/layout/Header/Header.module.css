@@ -77,6 +77,13 @@
   gap: var(--space-4);
 }
 
+/* Left Group */
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
 /* Hamburger Button */
 .hamburger {
   position: relative;
@@ -120,9 +127,6 @@
 
 /* Logo */
 .logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -130,6 +134,7 @@
   font-weight: var(--font-bold);
   font-size: var(--text-xl);
   transition: color var(--motion-fast);
+  margin-left: var(--space-2);
 }
 
 .logo:hover {
@@ -137,13 +142,12 @@
 }
 
 .logoText {
-  font-size: 18px;
-  display: none;
+  font-size: 16px;
 }
 
 @media (min-width: 640px) {
   .logoText {
-    display: block;
+    font-size: 18px;
   }
 }
 
@@ -179,8 +183,99 @@
 }
 
 .localeText {
+  font-size: 16px;
+  font-weight: var(--font-semibold);
+}
+
+/* Locale Dropdown */
+.localeDropdown {
+  position: relative;
+}
+
+.localeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  height: 2.5rem;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition:
+    color var(--motion-fast),
+    background-color var(--motion-fast);
+}
+
+.localeButton:hover {
+  color: var(--color-text);
+  background-color: var(--color-bg-tertiary);
+}
+
+[data-theme='light'] .localeButton {
+  color: var(--color-primary-400);
+}
+
+[data-theme='light'] .scrolled .localeButton {
+  color: var(--color-text-secondary);
+}
+
+[data-theme='dark'] .localeButton {
+  color: var(--color-white);
+}
+
+.localeArrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid currentColor;
+  font-size: 0;
+  transition: transform var(--motion-fast);
+}
+
+.localeArrow.open {
+  transform: rotate(180deg);
+}
+
+.localeMenu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 70px;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: var(--z-dropdown);
+}
+
+[data-theme='dark'] .localeMenu {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--color-border);
+}
+
+.localeOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-3);
   font-size: var(--text-sm);
   font-weight: var(--font-semibold);
+  color: var(--color-text-secondary);
+  transition:
+    color var(--motion-fast),
+    background-color var(--motion-fast);
+}
+
+.localeOption:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+.localeOption.selected {
+  color: var(--color-primary);
 }
 
 /* Overlay */

@@ -60,7 +60,7 @@ export function Home() {
       </Helmet>
 
       <div data-section>
-        <Hero backgroundVideo="/video/main.mp4" />
+        <Hero backgroundImage="/main_twp.png" />
       </div>
 
       <div data-section>
