@@ -1,7 +1,4 @@
-import { motion } from 'framer-motion';
-import { useLocale } from '../../../hooks';
-import { Container } from '../../layout';
-import { ArrowLink, ScatterText, ScrollIndicator } from '../../ui';
+import { ScrollIndicator } from '../../ui';
 import styles from './Hero.module.css';
 
 interface HeroProps {
@@ -10,7 +7,6 @@ interface HeroProps {
 }
 
 export function Hero({ backgroundImage, backgroundVideo }: HeroProps) {
-  const { t } = useLocale();
 
   // travelshift 스타일: 기본 배경 이미지
   const defaultBg =
